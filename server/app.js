@@ -8,6 +8,9 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
 var path = require('path');
+var unameGen = require('username-generator');
+var moment = require('moment');
+moment().format();
 
 app.use(express.static('../app/'));
 
@@ -102,18 +105,22 @@ app.get('/msg', function(req, res) {
 /*||||||||||||||||SOCKET|||||||||||||||||||||||*/
 
 var generateSessionID = function(){
-  return Math.random().toString(36).substring(7);
+  var output = Math.random().toString(36).substring(7);
+  return output
 };
+
+var sessions = [];
 
 //Listen for connection
 io.on('connection', function(socket) {
   //Globals
   var defaultSession = generateSessionID();
-  var sessions = [defaultSession];
+  sessions[sessions.length] = {id:defaultSession, username : unameGen.generateUsername(), time : moment()
+};
   console.log("WE ARE CONNECTED", sessions);
   //Emit the rooms array
   socket.emit('setup', {
-    sessions: sessions
+    sessions: sessions,
   });
 
   //Listens for new user
@@ -121,7 +128,7 @@ io.on('connection', function(socket) {
     console.log('NEW USER JOINED');
     data.session = defaultSession;
     //New user joins the default room
-    socket.join(default);
+    socket.join(defaultSession);
     //Tell all those in the room that a new user joined
     io.in(defaultRoom).emit('user joined', data);
   });
@@ -131,7 +138,7 @@ io.on('connection', function(socket) {
     console.log('NEW WORKER JOINED');
     data.session = defaultSession;
     //New user joins the default room
-    socket.join(default);
+    socket.join(defaultSession);
     //Tell all those in the room that a new user joined
     io.in(defaultRoom).emit('user joined', data);
   });
