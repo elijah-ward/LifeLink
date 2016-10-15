@@ -13,24 +13,20 @@
     <md-tabs style="font-family: 'Libre Franklin', sans-serif; width: 100%" md-stretch-tabs='always' md-dynamic-height md-border-bottom>
     <md-tab  label="Chat" layout-align="center center">
 
-<div layout="column" layout-margin>
-    <div layout="row" layout-fill layout-margin layout-align="center center">
+    <div layout="row" layout-margin layout-align="center start">
 
 
-           <div md-whiteframe="3" layout-fill flex="90" layout-align="center center">
-            <md-content layout-fill>
+           <div md-whiteframe="3" flex="90" layout-margin>
+            <md-content>
             <md-toolbar style="border-radius:3px 3px 0 0;" class="md-accent">
             <div class="md-toolbar-tools">
                 <h3>Incoming RFA's</h3>
             </div>
             </md-toolbar>
 
-            <md-content layout-fill>
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>First name</label>
-            <input ng-model="user.firstName">
-          </md-input-container>
+            <md-content style="min-height: 500px;">
+    <section layout="row" layout-sm="column" layout-wrap>
+          
 
         
     </section>
@@ -46,14 +42,39 @@
 
 
         </div>
-        </div>
       </md-tab>
 
       <md-tab label="Analytics">
-      <md-content class="md-padding">
-          <h1 style="font-family: 'Libre Franklin', sans-serif;" class="md-display-2">Analytics</h1>
+
+      <div layout="row" layout-margin layout-align="center start">
+
+
+           <div md-whiteframe="3" flex="90" layout-margin>
+            <md-content>
+            <md-toolbar style="border-radius:3px 3px 0 0;" class="md-accent">
+            <div class="md-toolbar-tools">
+                <h3>Community Wellbeing</h3>
+            </div>
+            </md-toolbar>
+
+            <md-content style="min-height: 500px;">
+    <section layout="row" layout-sm="column" layout-wrap>
           
-        </md-content>
+
+        
+    </section>
+            </md-content>
+
+            
+           
+                
+            </md-content>
+
+</div>
+
+
+
+        </div>
         </md-tab>
         </md-tabs>
 
