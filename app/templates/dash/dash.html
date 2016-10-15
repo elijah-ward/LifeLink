@@ -11,15 +11,47 @@
     <md-content layout="row">
 
     <md-tabs style="font-family: 'Libre Franklin', sans-serif; width: 100%" md-stretch-tabs='always' md-dynamic-height md-border-bottom>
-    <md-tab  label="Chat">
-    <md-content class="md-padding">
-          <h1 style="font-family: 'Libre Franklin', sans-serif;" class="md-display-2">Tab One</h1>
-        </md-content>
+    <md-tab  label="Chat" layout-align="center center">
+
+<div layout="column" layout-margin>
+    <div layout="row" layout-fill layout-margin layout-align="center center">
+
+
+           <div md-whiteframe="3" layout-fill flex="90" layout-align="center center">
+            <md-content layout-fill>
+            <md-toolbar style="border-radius:3px 3px 0 0;" class="md-accent">
+            <div class="md-toolbar-tools">
+                <h3>Incoming RFA's</h3>
+            </div>
+            </md-toolbar>
+
+            <md-content layout-fill>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>First name</label>
+            <input ng-model="user.firstName">
+          </md-input-container>
+
+        
+    </section>
+            </md-content>
+
+            
+           
+                
+            </md-content>
+
+</div>
+
+
+
+        </div>
+        </div>
       </md-tab>
 
       <md-tab label="Analytics">
       <md-content class="md-padding">
-          <h1 style="font-family: 'Libre Franklin', sans-serif;" class="md-display-2">Tab Two</h1>
+          <h1 style="font-family: 'Libre Franklin', sans-serif;" class="md-display-2">Analytics</h1>
           
         </md-content>
         </md-tab>
