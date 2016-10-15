@@ -14,7 +14,7 @@
 
             $mdThemingProvider.theme('default')
             .primaryPalette('grey')
-    .accentPalette('indigo')
+    .accentPalette('green')
     .warnPalette('grey');
             $mdThemingProvider.theme('dash-dark').primaryPalette('amber').dark();
             $mdThemingProvider.theme('card-grey').backgroundPalette('grey');
@@ -26,8 +26,7 @@
 
             $routeProvider.when('/', {
                 templateUrl: _templateBase + '/dash/dash.html' ,
-                controller: 'DashController',
-                controllerAs: '_authctrl'
+                controller: 'DashController'
             });
 
             $routeProvider.otherwise({ redirectTo: '/' });
