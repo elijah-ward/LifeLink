@@ -181,6 +181,36 @@ io.on('connection', function(socket) {
 /*||||||||||||||||||||END SOCKETS||||||||||||||||||*/
 
 
+
+/*//////////////////////ANALYTICS////////////////*/
+
+
+
+////////////////TWITTER API/////////////////////
+
+
+
+
+
+
+///////////////INDICIO.IO API/////////////////
+
+
+
+
+
+
+
+///////////////DICTIONARY API////////////////
+
+
+
+
+
+
+//////////////THESAURUS API//////////////////
+
+
 server.listen(3000);
 console.log('Server listening on port '+'3000');
 
