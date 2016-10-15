@@ -100,28 +100,47 @@ app.get('/msg', function(req, res) {
 
 
 /*||||||||||||||||SOCKET|||||||||||||||||||||||*/
+
+var generateSessionID = function(){
+  return Math.random().toString(36).substring(7);
+};
+
 //Listen for connection
 io.on('connection', function(socket) {
   //Globals
-  var defaultRoom = 'general';
-  var rooms = ["General", "angular", "socket.io", "express", "node", "mongo", "PHP", "laravel"];
-
+  var defaultSession = generateSessionID();
+  var sessions = [defaultSession];
+  console.log("WE ARE CONNECTED", sessions);
   //Emit the rooms array
   socket.emit('setup', {
-    rooms: rooms
+    sessions: sessions
   });
 
   //Listens for new user
   socket.on('new user', function(data) {
-    data.room = defaultRoom;
+    console.log('NEW USER JOINED');
+    data.session = defaultSession;
     //New user joins the default room
-    socket.join(defaultRoom);
+    socket.join(default);
     //Tell all those in the room that a new user joined
     io.in(defaultRoom).emit('user joined', data);
   });
 
+    //Listens for new worker
+  socket.on('new worker', function(data) {
+    console.log('NEW WORKER JOINED');
+    data.session = defaultSession;
+    //New user joins the default room
+    socket.join(default);
+    //Tell all those in the room that a new user joined
+    io.in(defaultRoom).emit('user joined', data);
+  });
+
+
+
   //Listens for switch room
   socket.on('switch room', function(data) {
+    console.log('SWITCHED ROOM');
     //Handles joining and leaving rooms
     //console.log(data);
     socket.leave(data.oldRoom);
@@ -131,8 +150,13 @@ io.on('connection', function(socket) {
 
   });
 
+  socket.on('test', function(data){
+    console.log(data);
+  });
+
   //Listens for a new chat message
   socket.on('new message', function(data) {
+    console.log('NEW MESSAGE');
     //Create message
     var newMsg = new Chat({
       username: data.username,
