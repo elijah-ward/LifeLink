@@ -1,10 +1,13 @@
-<md-content class="unselectable" style="width:100%; height:100%" layout="column">
+<md-content class="unselectable" ng-init="showConfirm($event);" style="width:100%; height:100%" layout="column">
    
 
     <md-toolbar style="height:100px; background-color: white" layout="row" class="md-whiteframe-4dp">
     <div style="padding-top: 30px; background-color: white" class="md-toolbar-tools">
 		<img style="margin-left: 200px; margin-right: 20px" src="images/lifelink.jpg" height="75" width="85"></img>
-        <h2 style="font-size:30px; font-family: 'Libre Franklin', sans-serif;"><b>LifeLink</b></h2>
+        <h2 style="font-size:30px; color: #424242; font-family: 'Libre Franklin', sans-serif;"><b>LifeLink</b></h2>
+        <span flex="45"></span>
+        <label style="color: #757575;">A Platform for Mental Wellness</label>
+        <span flex=""></span>
     </div>
     </md-toolbar>
 
@@ -22,18 +25,35 @@
             <div class="md-toolbar-tools">
                 <h3>Incoming RFA's</h3>
             </div>
+            <md-subheader class="md-no-sticky">Active Sessions</md-subheader>
             </md-toolbar>
 
-            <md-content style="min-height: 500px;">
+            <md-content style="height:70%">
     <section layout="row" layout-sm="column" layout-wrap>
           
+
+          <md-list flex>
+        
+        <md-list-item class="md-3-line" ng-repeat="session in sessions" ng-click="null">
+          <img ng-src="{{session.avatar}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ session.username }}</h3>
+            <h4>{{ session.id }}</h4>
+            </div>
+            <div class="md-list-item-text" layout="row">
+
+            <span flex=""></span>
+            <p>{{ session.time }}</p>
+            </div>
+          </div>
+          <md-divider ></md-divider>
+        </md-list-item>
+        
+        </md-list>
 
         
     </section>
             </md-content>
-
-            
-           
                 
             </md-content>
 
